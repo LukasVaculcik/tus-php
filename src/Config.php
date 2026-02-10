@@ -4,11 +4,9 @@ namespace TusPhp;
 
 class Config
 {
-    /** @const string */
-    private const DEFAULT_CONFIG_PATH = __DIR__ . '/Config/server.php';
+    private const string DEFAULT_CONFIG_PATH = __DIR__ . '/Config/server.php';
 
-    /** @var array */
-    protected static $config = [];
+    protected static array $config = [];
 
     /**
      * Get path to the base cache directory.
@@ -33,12 +31,12 @@ class Config
     /**
      * Load default application configs.
      *
-     * @param string|array $config
+     * @param array|string|null $config
      * @param bool         $force
      *
      * @return void
      */
-    public static function set($config = null, bool $force = false)
+    public static function set(array|string|null $config = null, bool $force = false): void
     {
         if ( ! $force && ! empty(self::$config)) {
             return;
@@ -58,7 +56,7 @@ class Config
      *
      * @return mixed
      */
-    public static function get(string $key = null)
+    public static function get(?string $key = null): mixed
     {
         self::set();
 
